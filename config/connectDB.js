@@ -3,7 +3,7 @@ require('dotenv').config({path:'./config/.env'})    // la variable a été enreg
 
 module.exports = async function () {
    try {
-       await mongoose.connect(process.env.MONGO_URI)
+       await mongoose.connect(process.env.MONGO_URI,{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
        console.log("Connected successfully to database ....")
    } 
    catch (error) {

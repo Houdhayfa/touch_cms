@@ -6,21 +6,26 @@ const connectDB=require('./config/connectDB')
 
 const port=process.env.PORT || 5000
 
+const authRouter=require('./routes/auth')
+const blogRouter=require('./routes/blog')
 
 
 
+                       /* middelwares*/
+
+ app.use(express.json())
+
+                       /* routes */
+
+app.use("/api/auth",authRouter)
+app.use("/",blogRouter)
 
 
 
-
-
-
-
-
-                    /* connection au serveur */
+                       /* connection à la base de donnée */
 
 connectDB()
-                    /* connection au serveur */
+                       /* connection au serveur */
 
 app.listen(port, (err) => {
     err
